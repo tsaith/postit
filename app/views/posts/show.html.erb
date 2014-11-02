@@ -1,0 +1,12 @@
+<p>
+  <%= render @post.categories %>
+</p>
+
+<h3><%= @post.title %></h3>
+<p><%= @post.description %></p>
+<hr/>
+
+<% @post.comments.each do |comment| %>
+  <li><%= comment.body %></li>
+  <br/>
+<% end %>
