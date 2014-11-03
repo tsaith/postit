@@ -17,9 +17,10 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.user = User.first # TODO: change once we have authentication
 
     if @post.save
-      flash[:notice] = "Post was created!"
+      flash[:notice] = "Your post was created."
       redirect_to posts_path
     else
       render 'new'
@@ -33,7 +34,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      flash[:notice] = "Post was updated!"
+      flash[:notice] = "Your post was updated."
       redirect_to posts_path
     else
       render 'show'
@@ -42,12 +43,11 @@ class PostsController < ApplicationController
 
   def destroy
     if @post.destroy
-      flash[:notice] = "Post was deleted!"
+      flash[:notice] = "Your post was deleted."
       redirect_to posts_path
     else
-      render 'show'
+      render 'index'
     end
-
   end
 
   private
@@ -57,7 +57,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit!
+    params.require(:post).permit(:title, :url, :description)
   end  
 
 end
