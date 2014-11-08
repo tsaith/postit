@@ -1,14 +1,13 @@
 class PostsController < ApplicationController
 
   before_action :set_post, only: [:show, :edit, :update]
-
+  
   def index
     @posts = Post.all
   end
 
   def show
-    #binding.pry
-    @post = Post.find(params[:id])
+    @comment = Comment.new
   end
 
   def new 
@@ -57,7 +56,8 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :url, :description)
+    params.require(:post).permit(:title, :url, :description,
+      category_ids: [])
   end  
 
 end

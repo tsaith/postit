@@ -1,12 +1,12 @@
-class CommentController < ApplicationController
+class CommentsController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    @comment = Comment.new(comment_params)
-
+    @comment = @post.comments.build(comment_params)
+    @comment.user = User.first # TODO: authenticaion
 
     if @comment.save
-      flash[:notice] = "Your comment was created"
+      flash[:notice] = "Your comment was created."
       redirect_to post_path(@post)
     else
       render 'posts/show'
