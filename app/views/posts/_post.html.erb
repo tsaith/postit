@@ -4,7 +4,7 @@
     <h4><%= link_to post.title, fix_url(post.url) %></h4>
     <p><%= post.description %></p>
     <p>
-      <small>posted by <%= post.user.username %> at <%= display_datetime(post.created_at) %></small>   
+      <small>posted by <%= link_to post.user.username, user_path(post.user) %> at <%= display_datetime(post.created_at) %></small>   
     </p>
     <small>
       <span>
