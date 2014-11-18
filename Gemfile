@@ -14,6 +14,9 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
+# A voting gem
+gem 'voteable_th', '~> 0.0.1'
+
 group :doc do
   gem 'sdoc', require: false
 end

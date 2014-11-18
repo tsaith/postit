@@ -15,7 +15,6 @@
 /log/*.log
 /tmp
 
-# Ignore all swap files of Vim 
+# Ignore temporary files 
 .*.swp
-
-# temparary files 
+*#
