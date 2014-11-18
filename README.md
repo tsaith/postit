@@ -1,3 +1,3 @@
 Postit
 ---
-Project of rapid prototyping of Tealeaf Academy.
+Project of rapid prototyping in Tealeaf Academy.
