@@ -2,6 +2,7 @@ class PostsController < ApplicationController
 
   before_action :set_post, only: [:show, :edit, :update, :vote]
   before_action :require_user, except: [:index, :show]
+  before_action :require_creator, only: [:edit, :update]
 
   def index
     @posts = Post.all.sort_by {|p| p.created_at}.reverse
@@ -29,7 +30,6 @@ class PostsController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
@@ -77,4 +77,7 @@ class PostsController < ApplicationController
       category_ids: [])
   end
 
+  def require_creator
+    access_denied unless logged_in? and (current_user == @post.user || current_user.admin?)
+  end
 end
