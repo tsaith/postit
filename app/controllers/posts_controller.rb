@@ -51,7 +51,7 @@ class PostsController < ApplicationController
   end
 
   def vote
-    @vote = Vote.create(voteable: @post, user: current_user, vote: params[:vote])
+    @vote = Vote.create(voteable: @post, creator: current_user, vote: params[:vote])
 
     respond_to do |format|
       format.html do
@@ -78,6 +78,6 @@ class PostsController < ApplicationController
   end
 
   def require_creator
-    access_denied unless logged_in? and (current_user == @post.user || current_user.admin?)
+    access_denied unless logged_in? and (current_user == @post.creator || current_user.admin?)
   end
 end

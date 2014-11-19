@@ -3,9 +3,11 @@
     <%= link_to "Postit!", root_path, :class => 'brand' %>
   </li>
 </ul>
-<div class='btn-group nav_item'>
-  <%= link_to '#', class: 'btn btn-small dropdown-toggle', 'data-toggle' => 'dropdown' do %>
-    Categories <span class='caret'></span>
+
+<div class="nav">
+  <div class='btn-group nav_item'>
+    <%= link_to '#', class: 'btn btn-small dropdown-toggle', 'data-toggle' => 'dropdown' do %>
+      Categories <span class='caret'></span>
   <% end %>
   <ul class='dropdown-menu'>
     <% Category.all.each do |category| %>
@@ -25,47 +27,48 @@
       <% end %>
     <% end %>
   </ul>
+  </div>
+
+  <% if logged_in? %>
+    <div class='nav_item'>
+      <%= link_to 'New Post', new_post_path, class: 'btn btn-success btn-small' %>
+    </div>
+
+    <div class='nav_item btn-group'>
+      <%= link_to '#', class: 'btn btn-small dropdown-toggle', 'data-toggle' => 'dropdown' do %>
+        <%= current_user.username %> <span class='caret'></span>
+      <% end %>
+      <ul class='dropdown-menu'>
+        <li>
+          <%= link_to edit_user_path(current_user) do %>
+	    <i class='icon-pencil'></i>
+	    edit profile
+	  <% end %>
+        </li>
+        <li>
+          <%= link_to user_path(current_user) do %>
+	    <i class='icon-user'></i>
+	    show profile
+	  <% end %>
+        </li>
+        <li>
+          <%= link_to logout_path do %>
+	    <i class='icon-circle-arrow-left'></i>
+	    'Log out'
+	  <% end %>
+        </li>
+      </ul>
+    </div>
+
+    <div class='nav_item'>
+      <%= link_to 'Log out', logout_path, class: 'btn btn-small' %>
+    </div>
+  <% else %>
+    <div class='nav_item'>
+      <%= link_to 'Register', register_path, class: 'btn btn-success btn-small' %>
+    </div>
+    <div class='nav_item'>
+      <%= link_to 'Log in', login_path, class: 'btn btn-small' %>
+    </div>
+  <% end %>
 </div>
-
-<% if logged_in? %>
-  <div class='nav_item'>
-    <%= link_to 'New Post', new_post_path, class: 'btn btn-success btn-small' %>
-  </div> 
-
-  <div class='nav_item btn-group'>
-    <%= link_to '#', class: 'btn btn-small dropdown-toggle', 'data-toggle' => 'dropdown' do %>
-      <%= current_user.username %> <span class='caret'></span>
-    <% end %>
-    <ul class='dropdown-menu'>
-      <li>
-        <%= link_to edit_user_path(current_user) do %>
-	  <i class='icon-pencil'></i>
-	  edit profile
-	<% end %>
-      </li>
-      <li>
-        <%= link_to user_path(current_user) do %>
-	  <i class='icon-user'></i>
-	  show profile
-	<% end %>
-      </li>
-      <li>
-        <%= link_to logout_path do %>
-	  <i class='icon-circle-arrow-left'></i>
-	  'Log out'
-	<% end %>
-      </li>
-    </ul>
-  </div>
-
-  <div class='nav_item'>
-    <%= link_to 'Log out', logout_path, class: 'btn btn-small' %>
-  </div>
-<% else %>
-  <div class='nav_item'>
-    <%= link_to 'Register', register_path, class: 'btn btn-success btn-small' %>
-  </div>
-  <div class='nav_item'>
-    <%= link_to 'Log in', login_path, class: 'btn btn-small' %>
- </div>
-<% end %>

@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find_by(slug: params[:post_id])
     @comment = @post.comments.build(comment_params)
-    @comment.user = current_user
+    @comment.creator = current_user
 
     if @comment.save
       flash[:notice] = "Your comment was created."
@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
 
   def vote
     @comment = Comment.find(params[:id])
-    @vote = Vote.create(voteable: @comment, user: current_user, vote: params[:vote])
+    @vote = Vote.create(voteable: @comment, creator: current_user, vote: params[:vote])
 
     respond_to do |format|
       format.html do
