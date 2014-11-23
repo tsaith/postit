@@ -16,6 +16,9 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       flash[:notice] = "Your are registered."
+      # Deliver welcome email
+      UserMailer.welcome_email(@user).deliver
+      #binding.pry
       redirect_to root_path
     else
       flash[:error] = "There's something wrong during registration."
@@ -53,7 +56,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:username, :password, :time_zone)
+    params.require(:user).permit(:email, :username, :password, :time_zone)
   end
 
   def require_same_user

@@ -9,7 +9,7 @@ PostitTemplate::Application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
-  # Show full error reports and disable caching.
+  # Show full error reports and disable caching.OB
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
@@ -25,8 +25,8 @@ PostitTemplate::Application.configure do
     port: 587,
     domain: "gmail.com",
     authentication: "plain",
-    user_name: "example@gmail.com",
-    password: "12345678",
+    user_name: ENV['POSTIT_SMTP_USER_NAME'],
+    password: ENV['POSTIT_SMTP_PASSWORD'],
     enable_starttls_auto: true
   }
 

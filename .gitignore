@@ -15,6 +15,9 @@
 /log/*.log
 /tmp
 
+# Ignore all settings under environments 
+#config/environments/*.rb
+
 # Ignore temporary files 
 .*.swp
 *#

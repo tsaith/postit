@@ -4,6 +4,10 @@
     <%= render 'shared/errors', obj: @user %>
 
     <div class='control-group'>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </div>
+    <div class='control-group'>
       <%= f.label :username %>
       <%= f.text_field :username %>
     </div>
