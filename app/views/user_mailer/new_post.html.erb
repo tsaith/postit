@@ -5,18 +5,20 @@
   </head>
 
   <body>
+    <h3>
+      標題: <%= @post.title %>
+    </h3>
+    <small>
+      建立時間: <%= @post.created_at %>
+    </small>
     <p>
-      Dear <%= @user.username %>,
+      內容:
     </p>
     <p>
-      感謝您的註冊!
+      <%= simple_format(@post.description) %>
     </p>
-    <p>
-      今後如有新公告，將會盡快在第一時間透過電子郵件向您通知。
-    </p>
-    <p>
-      敬祝 安康
-    </p>
+
     <%= render 'ending'%>
+
   </body>
 </html>

@@ -18,7 +18,6 @@ class UsersController < ApplicationController
       flash[:notice] = "Your are registered."
       # Deliver welcome email
       UserMailer.welcome_email(@user).deliver
-      #binding.pry
       redirect_to root_path
     else
       flash[:error] = "There's something wrong during registration."
