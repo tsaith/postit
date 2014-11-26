@@ -21,8 +21,6 @@ class PostsController < ApplicationController
     @post.creator = current_user
 
     if @post.save
-      # Send this post to all users
-      send_post(@post)
       flash[:notice] = "Your post was created."
       redirect_to posts_path
     else
@@ -81,13 +79,6 @@ class PostsController < ApplicationController
 
   def require_creator
     access_denied unless logged_in? and (current_user == @post.creator || current_user.admin?)
-  end
-
-  def send_post(post)
-    # Send the post to all users
-    User.all.each do |user|
-      UserMailer.new_post(user, post).deliver
-    end
   end
 
 end
