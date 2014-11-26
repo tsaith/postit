@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
       redirect_to post_path(@post)
     else
       flash[:notice] = "Your comment can't be created."
-      render 'posts/show'
+      redirect_to :back
     end
 
   end
