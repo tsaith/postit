@@ -5,6 +5,7 @@ Project of rapid prototyping in [Tealeaf Academy](http://www.gotealeaf.com/).
 
 [Demo site](http://th-postit.herokuapp.com/)
 
+Features:
 - User authentication
 - Create/Edit/Delete posts
 - Leave comments to posts
