@@ -1,7 +1,7 @@
 Postit
 ---
 
-Project of rapid prototyping in [Tealeaf Academy](http://www.gotealeaf.com/).
+Project of rapid prototyping of [Tealeaf Academy](http://www.gotealeaf.com/).
 
 [Demo site](http://th-postit.herokuapp.com/)
 
