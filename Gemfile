@@ -16,6 +16,7 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'voteable_th', '~> 0.0.4'  # Voting gem
 gem 'sluggable_th', '~> 0.0.0' # Set up slugs
+gem 'figaro', '1.0.0'
 
 group :doc do
   gem 'sdoc', require: false
